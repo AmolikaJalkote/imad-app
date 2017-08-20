@@ -5,12 +5,80 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
+var articleOne ={
+    title:'Article-One',
+    heading:' Article-one | amolika_j',
+    date: 'Augest 20 ,2017',
+    content:
+    `
+                <p>
+                    This is what i'm trying it out! :D
+                    First try! just coding in HTML..Follow my  quotes.
+                </p>
+                
+                 
+               <ol>
+                    <li>
+                        data, facts, intelligence, advice. 
+                    </li>
+                    <li>
+                         Information, knowledge, wisdom are terms for human acquirements through reading, study, and practical experience.
+                    </li>
+                </ol>
+                <p> Information applies to facts told, read, or communicated that may be unorganized and even unrelated: to pick up useful information. Knowledge is an organized body of information, or the comprehension and understanding consequent on having acquired and organized a body of facts: a knowledge of chemistry. Wisdom is a knowledge of people, life, and conduct, with the facts so thoroughly assimilated as to have produced sagacity, judgment, and insight: to use wisdom in handling people.
+               </p>
+`
+};
+function createTemplate (data)
+{
+    var date=data.date;
+    var title=data.title;
+    var heading=data.heading;
+    var content=data.content;
+    
+var htmltemplate=`
+    <html>
+    <head>
+        <title>
+            ${title}
+        </title>
+        <style>
+          .c1{
+               margin:0 auto;
+             
+              max-width: 500px;
+               color:gray;
+               font-family:san-serif;
+           } 
+        </style>
+    </head>
+    <body>
+        <div class="c1">
+            <div>
+                <a href="/ui/madi.png">Home</a>
+            </div>
+            <hr/>
+            <h3>${heading}</h3>
+            <div>
+               ${date}
+            </div>
+            <div >
+                ${content}
+            </div>
+        </div>
+    </body>
+</html>
+
+    `;
+    return htmltemplate;
+}
+
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
 app.get('/article-one',function(req,res){
-   res.sendFile(path.join(__dirname, 'ui', 'article-one.html'));
+   res.send(createtemplate(articleOne));
 });
 
 app.get('/article-two',function(req,res){
