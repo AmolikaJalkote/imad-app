@@ -54,7 +54,7 @@ artcleTwo:{
 },
 artcleThree:{
     heading:'Article-Three',
-    titlt:' Article-three | amolika_j',
+    title:' Article-three | amolika_j',
     date: 'Augest 20 ,2017',
     content:
     `
