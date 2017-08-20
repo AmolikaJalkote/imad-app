@@ -5,7 +5,8 @@ var path = require('path');
 var app = express();
 app.use(morgan('combined'));
 
-var articleOne ={
+var articles={
+articleOne :{
     title:'Article-One',
     heading:' Article-one | amolika_j',
     date: 'Augest 20 ,2017',
@@ -26,8 +27,44 @@ var articleOne ={
                     </li>
                 </ol>
                 <p> Information applies to facts told, read, or communicated that may be unorganized and even unrelated: to pick up useful information. Knowledge is an organized body of information, or the comprehension and understanding consequent on having acquired and organized a body of facts: a knowledge of chemistry. Wisdom is a knowledge of people, life, and conduct, with the facts so thoroughly assimilated as to have produced sagacity, judgment, and insight: to use wisdom in handling people.
-               </p>
-`
+               </p>`
+               },
+               
+artcleTwo:{
+    title:'Article-Two',
+    heading:' Article-two | amolika_j',
+    date: 'Augest 20 ,2017',
+    content:
+    `
+                <p>
+                    This is what i'm trying it out! :D
+                    First try! just coding in HTML..Follow my  quotes.
+                </p>
+                
+                 
+               <ol>
+                    <li>
+                        data, facts, intelligence, advice. 
+                    </li>
+                    <li>
+                         Information, knowledge, wisdom are terms for human acquirements through reading, study, and practical experience.
+                    </li>
+                </ol>
+                `
+},
+artcleThree:{
+    title:'Article-Three',
+    heading:' Article-three | amolika_j',
+    date: 'Augest 20 ,2017',
+    content:
+    `
+                <p>
+                    This is what i'm trying it out! :D
+                    First try! just coding in HTML..Follow my  quotes.
+                </p>
+                
+             `
+},
 };
 function createTemplate (data)
 {
