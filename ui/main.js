@@ -3,9 +3,9 @@ var element=document.getElementById("main-text");
 //element.innerHTML='New Value';
 var img=document.getElementById('myimg');
 var marginLeft=0;
-function moveRight{
+function moveRight(){
   marginLeft=marginLeft + 10 ;
-  img.style.marginLeft + 'px';
+  img.style.marginLeft + 'px'
 };
 img.onclick=function(){
     var interval=setInterval(moveRight,100);
