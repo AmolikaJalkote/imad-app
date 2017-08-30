@@ -141,7 +141,8 @@ app.get('/ui/main.js', function (req, res) {
 var names=[];
 app.get('/submit/:name',function(req,res){
 //get name from request object
-    var name=req.params.name;
+    //var name=req.params.name;
+    var name=req.query.name;
     names.push(name);
     //JSON:Javascript Object Notation:Converts js object into strings.
     res.send(JSON.stringify(names));
