@@ -18,3 +18,21 @@ button.onClick=function(){
   var span=document.getElementById('count');
   span.innerHTML=counter.toString();
 };
+
+
+//Submit name
+var nameInput=document.getElementById("name");
+var name=nameInput.value;
+var submit=document.getElementById("submit");
+submit.onClick=function(){
+//makes request to the server and send the name
+
+//captures list of name and render
+var names=["name1","name2","name3"];
+var list=" ";
+for(var i=0;i<names.length;i++)
+{
+    list=list + '<li>' + names[i] + '</li>';
+}
+    var ul=document.getElementById("namelist");
+}
