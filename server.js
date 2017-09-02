@@ -119,6 +119,11 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
+app.get('/test-db',function(req,res){
+    //make select request
+    //return a result with respose
+});
+
 app.get('/:articleName',function(req,res){
     var articleName=req.params.articleName;
    res.send(createTemplate(articles[articleName]));
@@ -151,3 +156,4 @@ var port = 80;
 app.listen(port, function () {
   console.log(`IMAD course app listening on port ${port}!`);
 });
+
