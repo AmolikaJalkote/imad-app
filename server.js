@@ -146,9 +146,21 @@ app.get('/test-db',function(req,res){
     });
 });
 
-app.get('/:articleName',function(req,res){
-    var articleName=req.params.articleName;
-   res.send(createTemplate(articles[articleName]));
+app.get('/articles/:articleName',function(req,res){
+   // var articleName=req.params.articleName;
+    //res.send(createTemplate(articles[articleName]));
+    //var articleData;//will have values from DB.
+   // pool.query("select* from article where title='article-one'");
+    pool.query("select* from article where title=" + req.params.articleName,function(err,result){
+        if(err){
+            
+        }else{
+            
+        }
+    });
+   res.send(createTemplate(articleData));
+   
+   
 });
 
 
