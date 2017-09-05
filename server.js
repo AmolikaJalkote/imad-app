@@ -141,7 +141,13 @@ app.get('/test-db',function(req,res){
            res.status(500).send(err.toString())
        } else{
         //   res.send(JSON.stringify(result));
-           res.send(JSON.stringify(result.rows));
+          // res.send(JSON.stringify(result.rows));
+          if(result.rows.length==0){
+              res.status(404).send("Article not found");
+          }else{
+              var articleData=result.rows[0];
+              res.send(createTemplate(articleData));
+          }
        }
     });
 });
