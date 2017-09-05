@@ -108,7 +108,7 @@ var htmltemplate=`
             <hr/>
             <h3>${heading}</h3>
             <div>
-               ${date}
+               ${date.toDateStrig()}
             </div>
             <div >
                 ${content}
