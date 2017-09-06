@@ -2,7 +2,7 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 var crypto=require('crypto');
-
+var bodyParser=require('body-parser');//express library
 //--to connect to the database.
 var Pool=require(pg).Pool;
 
@@ -16,6 +16,7 @@ var config={
 
 var app = express();
 app.use(morgan('combined'));
+app.use(bodyParser.json());//to tell express framework the coming request.
 
 var articles={
 'article-one' :{
@@ -139,10 +140,23 @@ app.get('/hash/:index',function(res,req){
 
 
 //function to create a new user
-app.get('/create-user',function(req,res){
+app.post('/create-user',function(req,res){
+    //json request
+    var username=req.body.username;
+    var password=req.body.password;
     //takes usernme and password and entries it in uservtable of DB.
-    
-})
+    var salt=crypto.getRandomBytes(128).toString('hex');
+    var dbString=hash(password,salt);
+    pool.query('Insert into "user" (username,password) values ($1,$2)',[username,dbString],function(err,result){
+        
+        if(err){
+           res.status(500).send(err.toString());
+       } else{
+       
+           res.send('User successfully created: '+username);
+       }
+    });
+});
 
 
 var counter=0;
