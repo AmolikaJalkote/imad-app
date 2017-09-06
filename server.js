@@ -1,6 +1,7 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
+var crypto=require('crypto');
 
 //--to connect to the database.
 var Pool=require(pg).Pool;
@@ -121,6 +122,23 @@ var htmltemplate=`
     return htmltemplate;
 }
 
+
+function hash(input,salt){
+    //how do we create a hash?
+    var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');//10000 is no. of iterations
+   // return hashed;//outputs sequence of bytes.
+   return hashed.toString('hex');
+}
+
+app.get('/hash/:index',function(res,req){
+    var hashedString=hash(req.params.input,'this-is-some rande string');
+    res.send(hasedString);
+});
+
+
+
+
+
 var counter=0;
 app.get('/counter',function(req,res){
    counter=counter + 1;
@@ -142,7 +160,7 @@ app.get('/test-db',function(req,res){
        } else{
         //   res.send(JSON.stringify(result));
           // res.send(JSON.stringify(result.rows));
-          if(result.rows.length==0){
+          if(result.rows.length===0){
               res.status(404).send("Article not found");
           }else{
               var articleData=result.rows[0];
