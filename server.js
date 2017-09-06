@@ -128,6 +128,8 @@ function hash(input,salt){
     var hashed=crypto.pbkdf2Sync(input,salt,10000,512,'sha512');//10000 is no. of iterations
    // return hashed;//outputs sequence of bytes.
    return hashed.toString('hex');
+   //pbkdf2Sync() function takes our i/p,appends the value to the salt and applies hash function 10000v times
+   //pbkdf is Password based Key Derivation Function.
 }
 
 app.get('/hash/:index',function(res,req){
@@ -136,7 +138,11 @@ app.get('/hash/:index',function(res,req){
 });
 
 
-
+//function to create a new user
+app.get('/create-user',function(req,res){
+    //takes usernme and password and entries it in uservtable of DB.
+    
+})
 
 
 var counter=0;
